@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Оголошення</title>
+    <style>
+        .announcement-list-item {
+            cursor: pointer;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button onclick="loadAnnouncements()">Home</button>
+        <button onclick="showAddAnnouncementPopup()">Add announcement</button>
+    </div>
+
+    <ul id="announcementList"></ul>
+
+    <div id="announcementPopup" class="popup">
+        <span onclick="closeAnnouncementPopup()" class="popup-close">&times;</span>
+        <div id="announcementDetails"></div>
+        <ul id="similarAnnouncements"></ul>
+        <button onclick="deleteAnnouncement()">Delete</button>
+    </div>
+
+    <div id="addAnnouncementPopup" class="popup">
+        <span onclick="closeAddAnnouncementPopup()" class="popup-close">&times;</span>
+        <form id="addAnnouncementForm" onsubmit="event.preventDefault(); addAnnouncement();">
+            <input type="text" id="announcementTitle" placeholder="title" required>
+            <textarea id="announcementDescription" placeholder="description" required></textarea>
+            <button type="submit">Add</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/js/site.js"></script>
+</body>
+</html>
